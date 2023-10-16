@@ -1,13 +1,13 @@
 # Project Ides
 
 
-# 1. Recursive Patterns in Architectural Design
+## 1. Recursive Patterns in Architectural Design
 
-## Project Description
+### Project Description
 
 This project explores the application of recursive patterns and algorithms in architectural design to create visually appealing and structurally sound buildings. The project takes inspiration from fractal patterns and self-similar structures to enhance architectural aesthetics and functionality.
 
-## Project Steps
+### Project Steps
 
 1. **Select a Fractal Algorithm**: Choose a fractal algorithm (e.g., Sierpinski Triangle, Koch Snowflake, Cantor Set) as the foundation for the architectural design.
 
@@ -29,11 +29,11 @@ This project explores the application of recursive patterns and algorithms in ar
 
 10. **Presentation and Documentation**: Create a comprehensive presentation and documentation detailing the architectural design concept, the use of recursion, structural integrity, energy efficiency, and the cost estimation.
 
-## Expected Outcomes
+### Expected Outcomes
 
 At the conclusion of this project, you will have developed a significant architectural design that effectively integrates recursive patterns and fractal aesthetics. This experience will enhance your understanding of applying mathematical concepts to real-world architectural design challenges, including balancing innovative design with structural integrity.
 
-## Collaboration and Expertise
+### Collaboration and Expertise
 
 Collaborating with architectural firms, experts, and mentors can be invaluable to ensure that the recursive architectural design is both practical and adheres to building regulations, safety standards, and industry best practices.
 
