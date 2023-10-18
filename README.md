@@ -40,7 +40,7 @@ Collaborating with architectural firms, experts, and mentors can provide valuabl
 
 ## 2. AI-Enhanced Personalized Learning Platform
 
-![AI Learning Platform Image](./pictures/download.jpeg)
+![AI Learning Platform Image](./pictures/ai.jpeg)
 
 ### Project Description
 
