@@ -2,7 +2,7 @@
 
 ## 1. Recursive Patterns in Architectural Design
 
-![Architectural Design](./images/architectural-design.jpeg)
+![Architectural Design](./pictures/download.jpeg)
 
 ### Project Description
 
