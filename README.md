@@ -74,7 +74,7 @@ Collaborating with educators, instructional designers, and experts in AI can pro
 
 ## 3. Blockchain-Based Supply Chain Management
 
-![Blockchain Supply Chain Image](Image_URL_Goes_Here)
+![Blockchain Supply Chain Image](./pictures/block.jpeg)
 
 ### Project Description
 
