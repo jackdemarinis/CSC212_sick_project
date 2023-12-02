@@ -1,6 +1,6 @@
-# Project Ideas with README Templates
+# CSC 212 Project
 
-## 1. Convex Hull
+## 1. Introduction to Convex Hull
 
 ![Architectural Design](./pictures/Intro.png)
 
