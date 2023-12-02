@@ -1,34 +1,25 @@
 # Project Ideas with README Templates
 
-## 1. Recursive Patterns in Architectural Design
+## 1. Convex Hull
 
 ![Architectural Design](./pictures/download.jpeg)
 
 ### Project Description
+The convex hull of a set of points is the smallest convex shape enclosing all the given points without any inward angles greater than 180 degrees. It represents the outer boundary that forms a convex polygon or polyhedron, essential in computational geometry for various algorithms involving point sets, such as collision detection, spatial analysis, and computational geometry problems. To accomplish this, Graham's scan algorithm is impleted to find the convex hull.
 
-This project explores the application of recursive patterns and algorithms in architectural design to create visually appealing and structurally sound buildings. The project takes inspiration from fractal patterns and self-similar structures to enhance architectural aesthetics and functionality.
+### Graham's Scan Algorithm
 
-### Project Steps
+1. **Given a set of points, sort through and find the lowest Y coordinate value. If there are multiple, use the lowest X value among them. This one point will be the anchor point.
 
-1. **Select a Fractal Algorithm**: Choose a fractal algorithm (e.g., Sierpinski Triangle, Koch Snowflake, Cantor Set) as the foundation for the architectural design.
+2. **Sort the remaing points by the angle they form with the anchor point going from smallest to largest starting with the anchor point. If two angles are the same, put the smallest distance from the anchor point first.
 
-2. **Architectural Context**: Define the architectural context (public, residential, commercial, etc.) and consider the type of structure (e.g., pavilion, bridge, tower).
+3. **If there are less than 3 data points, the convel hull is unable to be found.
 
-3. **Scale and Dimensions**: Determine the scale and dimensions of the architectural design, accounting for site constraints and the building's purpose.
+4. **Create a vector to store the points that will form the convex hull. Push the anchor point and the next data point from the sorted list to the convex hull vector.
 
-4. **Recursive Facade Design**: Apply the selected fractal algorithm to the building's facade, repeating and scaling down the pattern to create a unique exterior.
+5. **Start with the third data point and anaylze the orientation of this point with the previous 2. If the orientation of these 3 points are counter-clockwise, add it to the convex hull vector. If not, move on to the next point and continue to analyaze that point with the previous 2.
 
-5. **Structural Considerations**: Collaborate with structural engineers to ensure the design is structurally sound, considering the intricate shapes of recursive patterns.
-
-6. **Materials and Construction Techniques**: Choose materials and construction techniques that align with the recursive design, and understand their implications on the project.
-
-7. **Energy Efficiency and Sustainability**: Incorporate energy-efficient and sustainable design principles, leveraging the recursive patterns to optimize natural lighting, ventilation, and insulation.
-
-8. **Visualization and 3D Modeling**: Use CAD and 3D modeling software to create detailed visual representations of the design, emphasizing the recursive patterns.
-
-9. **Cost Estimation**: Prepare a cost estimation, accounting for materials, labor, and any specialized construction requirements associated with the recursive design.
-
-10. **Presentation and Documentation**: Create a comprehensive presentation and documentation detailing the architectural design concept, the use of recursion, structural integrity, energy efficiency, and the cost estimation.
+6. **Print out the components of the convex hull.
 
 ### Expected Outcomes
 
