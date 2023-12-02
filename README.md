@@ -9,17 +9,17 @@ The convex hull of a set of points is the smallest convex shape enclosing all th
 
 ### Graham's Scan Algorithm
 
-1. **Given a set of points, sort through and find the lowest Y coordinate value. If there are multiple, use the lowest X value among them. This one point will be the anchor point.
+1. Given a set of points, sort through and find the lowest Y coordinate value. If there are multiple, use the lowest X value among them. This one point will be the anchor point.
 
-2. **Sort the remaing points by the angle they form with the anchor point going from smallest to largest starting with the anchor point. If two angles are the same, put the smallest distance from the anchor point first.
+2. Sort the remaing points by the angle they form with the anchor point going from smallest to largest starting with the anchor point. If two angles are the same, put the smallest distance from the anchor point first.
 
-3. **If there are less than 3 data points, the convel hull is unable to be found.
+3. If there are less than 3 data points, the convel hull is unable to be found.
 
-4. **Create a vector to store the points that will form the convex hull. Push the anchor point and the next data point from the sorted list to the convex hull vector.
+4. Create a vector to store the points that will form the convex hull. Push the anchor point and the next data point from the sorted list to the convex hull vector.
 
-5. **Start with the third data point and anaylze the orientation of this point with the previous 2. If the orientation of these 3 points are counter-clockwise, add it to the convex hull vector. If not, move on to the next point and continue to analyaze that point with the previous 2.
+5. Start with the third data point and anaylze the orientation of this point with the previous 2. If the orientation of these 3 points are counter-clockwise, add it to the convex hull vector. If not, move on to the next point and continue to analyaze that point with the previous 2.
 
-6. **Print out the components of the convex hull.
+6. Print out the components of the convex hull.
 
 ### Expected Outcomes
 
