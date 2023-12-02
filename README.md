@@ -2,7 +2,7 @@
 
 ## 1. Convex Hull
 
-![Architectural Design](./pictures/download.jpeg)
+![Architectural Design](./pictures/Intro.png)
 
 ### Project Description
 The convex hull of a set of points is the smallest convex shape enclosing all the given points without any inward angles greater than 180 degrees. It represents the outer boundary that forms a convex polygon or polyhedron, essential in computational geometry for various algorithms involving point sets, such as collision detection, spatial analysis, and computational geometry problems. To accomplish this, Graham's scan algorithm is impleted to find the convex hull.
