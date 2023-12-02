@@ -23,11 +23,11 @@ The convex hull of a set of points is the smallest convex shape enclosing all th
 
 ### Expected Outcomes
 
-At the conclusion of this project, you will have developed a significant architectural design that effectively integrates recursive patterns and fractal aesthetics. This experience will deepen your understanding of applying mathematical concepts to real-world architectural design challenges, including balancing innovative design with structural integrity.
+At the conclusion of this project, we will have working code that can find the convex hull of a set of points and store them into a vector. Using this vector, we can implement different functions that provide real world scenarios to display the uses of a convex hull. Main implemenetations are collision detection, image processing and shape detection.
 
-### Collaboration and Expertise
+### How to run the code
 
-Collaborating with architectural firms, experts, and mentors can provide valuable insights and ensure that the platform aligns with educational best practices.
+Our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull.
 
 ## 2. AI-Enhanced Personalized Learning Platform
 
