@@ -101,8 +101,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
             //The 3 buttons
             CreateWindowW(L"BUTTON", L"ENTER", WS_VISIBLE | WS_CHILD, 545, 900, 70, 30 , hwnd, (HMENU)ENTER, GetModuleHandleW(NULL), NULL);
-            CreateWindowW(L"BUTTON", L"PROCESS IMAGE", WS_VISIBLE | WS_CHILD, 620, 900, 140, 30 , hwnd, (HMENU)CYCLE, GetModuleHandleW(NULL), NULL);
-            CreateWindowW(L"BUTTON", L"CYCLE IMAGES", WS_VISIBLE | WS_CHILD, 765, 900, 140, 30 , hwnd, (HMENU)IMGPROCESS, GetModuleHandleW(NULL), NULL);
+            CreateWindowW(L"BUTTON", L"CYCLE IMAGES", WS_VISIBLE | WS_CHILD, 765, 900, 140, 30 , hwnd, (HMENU)CYCLE, GetModuleHandleW(NULL), NULL);
+            CreateWindowW(L"BUTTON", L"PROCESS IMAGE", WS_VISIBLE | WS_CHILD, 620, 900, 140, 30 , hwnd, (HMENU)IMGPROCESS, GetModuleHandleW(NULL), NULL);
 
             break;
 		}
