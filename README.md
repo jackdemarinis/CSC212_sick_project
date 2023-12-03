@@ -29,39 +29,19 @@ At the conclusion of this project, we will have working code that can find the c
 
 Our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull.
 
-## 2. AI-Enhanced Personalized Learning Platform
+## 2. GUI-Creation
 
-![AI Learning Platform Image](./pictures/ai.jpeg)
+The GUI takes advantage of the "gdiplus" and "gdi32" libraries in order to produce images in a clean and customizable format. GDI stands for Graphics Device Interface and is a core graphics library in the windows operating system. It also utilizes a very popular header file; "Windows.h". This opens up a lot more commands and functions such as CreateWindowW, and AppendMenu. Finally, it uses the User32.dll library which is part of the Windows API (Application Programming Interface). This helps greatly with overall application development.
 
-### Project Description
-
-This project focuses on the development of a personalized learning platform empowered by artificial intelligence (AI). The platform will analyze user learning patterns and adapt educational content to individual needs, enhancing the learning experience.
-
-### Project Steps
-
-1. **AI Model Selection**: Choose a machine learning or deep learning model to analyze user learning data and provide personalized content recommendations.
-
-2. **Educational Context**: Define the educational context of the platform, specifying the target audience (e.g., students, professionals) and the subject matter.
-
-3. **User Profiling**: Develop a system to collect and analyze user data, understanding their learning preferences, strengths, and weaknesses.
-
-4. **Content Adaptation**: Implement algorithms that adapt educational content based on user profiles, creating personalized learning experiences.
-
-5. **User Interface Design**: Create an intuitive and user-friendly interface to engage users and present personalized content effectively.
-
-6. **Testing and Evaluation**: Evaluate the AI model's performance and user satisfaction through testing, feedback collection, and iterative improvements.
-
-7. **Scalability**: Ensure the platform can scale as the user base grows, accommodating diverse learning needs and preferences.
-
-8. **Documentation and User Guide**: Prepare documentation and a user guide to help users understand and maximize the benefits of the personalized learning platform.
-
-### Expected Outcomes
-
-By the end of this project, you will have developed a personalized learning platform driven by AI, offering users tailored educational content. This experience will deepen your understanding of AI in education and technology's potential to enhance learning.
-
-### Collaboration and Expertise
-
-Collaborating with educators, instructional designers, and experts in AI can provide valuable insights and ensure that the platform aligns with educational best practices.
+Steps for the user :
+1. Link the gdiplus and gdi32 libraries in your IDE
+2. Export images into the file that contains the code
+3. Run the program
+4. Enter 3 values into the bottom textboxes -> Enter the name of the file with the file extension (Ex. myImage.jpg), the width of the image (Ex. 1280), and the height of the image (Ex. 720)
+5. Press the ENTER button
+6. For the program to process your image, press the PROCESS IMAGE button
+7. Once the program has processed your image, you can cycle between the original and the new image by pressing the CYCLE IMAGES button
+8. To reset the window and use the program again, open the drop-down menu in the top left of the window to reset everything -> Your new edited file will not be altered by this
 
 ## 3. Blockchain-Based Supply Chain Management
 
