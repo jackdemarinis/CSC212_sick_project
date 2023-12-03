@@ -3,13 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#define ENTER 1
+#define ENTER 1 //Defines each button
 #define CYCLE 2
 #define IMGPROCESS 3
 
-std::vector<std::string> listImages;
-int imageWidthNum, imageHeightNum;
-char resetStr[50]=""; //Reset Str
+std::vector<std::string> listImages; //Vector for the names of images
+int imageWidthNum, imageHeightNum; //Integer values for the image resolution
+char resetStr[50]=""; //Reset String
 
 HWND ImageNameText, ImageWidth, ImageHeight, PictureHeader; //Each textbox
 
@@ -44,9 +44,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine
 		return 0;
 	}
 
-	listImages.emplace_back("whitePic.JPG");
+	listImages.emplace_back("whitePic.JPG"); //Adds a white picture to the listImages vector to stabilize the program
 
-	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, ClassName, "Image Viewer", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, NULL, NULL, hInstance, NULL);
+	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, ClassName, "Image Viewer", WS_VISIBLE | WS_SYSMENU | WS_OVERLAPPED, CW_USEDEFAULT, CW_USEDEFAULT, 1400, 1005, NULL, NULL, hInstance, NULL); //Creation of the window
 
 	if (hwnd == NULL) {
 		MessageBox(NULL, "Error create window", "Error", MB_ICONERROR);
@@ -77,7 +77,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		}
 		case WM_CREATE: { //Making the
 
-            //Window in full-screen is about 1920 by 1010 pixels
+            //Window is about 1500 by 1005 pixels
 
             //Makes the drop down menu for the reset button
             HMENU hBaseMenu = CreateMenu();
@@ -87,22 +87,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             SetMenu(hwnd, hBaseMenu);
 
             //Picture header textbox -> Set to basic value of "[No Picture Inputted]"
-            PictureHeader=CreateWindowExW(0, L"STATIC", L"[No Picture Inputted]", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,860, 5, 200, 40, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            PictureHeader=CreateWindowExW(0, L"STATIC", L"[No Picture Inputted]", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,680, 5, 200, 40, hwnd, NULL, GetModuleHandleW(NULL), NULL);
 
             //The title boxes for the user input textboxes
-            CreateWindowExW(0, L"STATIC", L"File Name", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,75, 867, 80, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
-            CreateWindowExW(0, L"STATIC", L"Image Width", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,380, 862, 80, 35, hwnd, NULL, GetModuleHandleW(NULL), NULL);
-            CreateWindowExW(0, L"STATIC", L"Image Height", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,485, 862, 80, 35, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            CreateWindowExW(0, L"STATIC", L"File Name", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,30, 867, 80, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            CreateWindowExW(0, L"STATIC", L"Image Width", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,335, 862, 80, 35, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            CreateWindowExW(0, L"STATIC", L"Image Height", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,440, 862, 80, 35, hwnd, NULL, GetModuleHandleW(NULL), NULL);
 
             //The 3 user input textboxes
-            ImageNameText=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,75, 900, 300, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
-            ImageWidth=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,380, 900, 100, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
-            ImageHeight=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,485, 900, 100, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            ImageNameText=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,30, 900, 300, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            ImageWidth=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,335, 900, 100, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            ImageHeight=CreateWindowExW(0, L"EDIT", L"", WS_BORDER | WS_VISIBLE | WS_CHILD,440, 900, 100, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
 
             //The 3 buttons
-            CreateWindowW(L"BUTTON", L"ENTER", WS_VISIBLE | WS_CHILD, 590, 900, 70, 30 , hwnd, (HMENU)ENTER, GetModuleHandleW(NULL), NULL);
-            CreateWindowW(L"BUTTON", L"PROCESS IMAGE", WS_VISIBLE | WS_CHILD, 665, 900, 140, 30 , hwnd, (HMENU)CYCLE, GetModuleHandleW(NULL), NULL);
-            CreateWindowW(L"BUTTON", L"CYCLE PICS", WS_VISIBLE | WS_CHILD, 810, 900, 140, 30 , hwnd, (HMENU)IMGPROCESS, GetModuleHandleW(NULL), NULL);
+            CreateWindowW(L"BUTTON", L"ENTER", WS_VISIBLE | WS_CHILD, 545, 900, 70, 30 , hwnd, (HMENU)ENTER, GetModuleHandleW(NULL), NULL);
+            CreateWindowW(L"BUTTON", L"PROCESS IMAGE", WS_VISIBLE | WS_CHILD, 620, 900, 140, 30 , hwnd, (HMENU)CYCLE, GetModuleHandleW(NULL), NULL);
+            CreateWindowW(L"BUTTON", L"CYCLE IMAGES", WS_VISIBLE | WS_CHILD, 765, 900, 140, 30 , hwnd, (HMENU)IMGPROCESS, GetModuleHandleW(NULL), NULL);
 
             break;
 		}
@@ -131,7 +131,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 break;
             }
 
-			static int CtrWidth, CtrHeight; //Window in full-screen is about 1920 by 1010 pixels
+			static int CtrWidth, CtrHeight; //Window is about 1400 by 1005 pixels
             if(imageWidthNum==1280&&imageHeightNum==720) {
                 CtrWidth=1280, CtrHeight=720; //Changes image resolution to 720p
             }
@@ -151,8 +151,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 CtrWidth=imageWidthNum, CtrHeight=imageHeightNum; //Keeps the image the same resolution
             }
 
-            positionX=(1920-CtrWidth)/2,positionY=100;
-			//std::cout<<"Test...\n"<<positionX<<", "<<positionY<<", "<<cxClient<<", "<<cyClient<<", "<<CtrWidth<<", "<<CtrHeight<<"\n";
+            positionX=((1400-CtrWidth)/2)-10,positionY=100;
 
 			graph.DrawImage(&img, positionX, positionY, CtrWidth, CtrHeight);
 
@@ -171,7 +170,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 GetWindowText(ImageWidth, widthUserInput, 50);
                 GetWindowText(ImageHeight, heightUserInput, 50);
                 imageWidthNum=std::stoi(widthUserInput), imageHeightNum=std::stoi(heightUserInput);
-                //std::cout<<imageWidthNum<<" "<<imageHeightNum<<"\n";
                 if(imageWidthNum>1280&&imageHeightNum>720) { //Checks if the image resolution is greater than 720p
                     imageWidthNum=1280, imageHeightNum=720; //Auto adjusts image down to 720p to fit into the window
                 }
@@ -180,8 +178,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     listImages.emplace_back(fnameUserInput);
                     counter++;
                     InvalidateRect(hwnd, NULL, TRUE); //Draws the image
-                    char pictureHeaderStr[50]="Original Picture"; //Changes the header to "Original Picture"
-                    SetWindowText(PictureHeader, pictureHeaderStr);
+                    char pictureHeaderStr[50]="Original Picture";
+                    SetWindowText(PictureHeader, pictureHeaderStr); //Changes the header to "Original Picture"
                 }
                 SetWindowText(ImageNameText, resetStr); //Resets the values of the text boxes to make them blank
                 SetWindowText(ImageWidth, resetStr);
