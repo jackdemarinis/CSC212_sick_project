@@ -5,6 +5,62 @@
 #include <utility>
 #include <vector>
 
+void convexHull::detectShape(std::vector<Point> convexHull)
+{
+    if(convexHull.size() == 3)//could be triangle, equilaterian isosoles and scalene
+    {
+        int sameSides = 0;
+        if(findDistance(convexHull[0],convexHull[1]) == findDistance(convexHull[0],convexHull[2]))
+        {
+            sameSides++;
+        }
+        if(findDistance(convexHull[0],convexHull[1]) == findDistance(convexHull[1],convexHull[2]))
+        {
+            sameSides++;
+        }
+        if(findDistance(convexHull[0],convexHull[2]) == findDistance(convexHull[1],convexHull[2]))
+        {
+            sameSides++;
+        }
+
+        if(sameSides == 3)
+        {
+            std::cout << "It is an equilateral Triangle" << std::endl;
+        }
+        else if(sameSides == 2)
+        {
+            std::cout << "It is an isosceles triangle" << std::endl;
+        }
+        else
+        {
+            std::cout << "It is a scalene triangle" << std::endl;
+        }
+
+    }
+    else if(convexHull.size() == 4) //could be square / rectangle
+    {
+        if(findDistance(convexHull[0],convexHull[1]) == findDistance(convexHull[2],convexHull[3])) //if top equals bottom
+        {
+            if(findDistance(convexHull[0],convexHull[1]) == findDistance(convexHull[3],convexHull[0])) //bottom also equals side
+            {
+                std::cout << "It is a square" << std::endl;
+            }
+            else
+            {
+                std::cout << "It is a rectangle" << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "It is a rectangle" << std::endl;
+        }
+    }
+}
+
+int convexHull::findDistance(Point p1, Point p2)
+{
+    return sqrt(pow(p1.x-p2.x,2) + pow(p1.y-p2.y,2));
+}
 
 std::vector<Point> convexHull::createConvexHull(std::string filename)
 {
@@ -36,7 +92,7 @@ std::vector<Point> convexHull::createConvexHull(std::string filename)
 
     for(int i = 2; i < dataSet.size(); i++) //build convex hull
     {
-        if(orientation(dataSet[i-2],dataSet[i-1],dataSet[i]) == 1) //if counterclockwise
+        if(orientation(convexHull[convexHull.size()-2],convexHull[convexHull.size()-1],dataSet[i]) == 1) //if counterclockwise
         {
             convexHull.push_back(dataSet[i]); //add to convexhull
         }
@@ -64,8 +120,7 @@ void convexHull::saveToDotFile(const std::vector<Point>& points, const std::stri
         // Add edges between points
         for (size_t i = 0; i < points.size(); ++i) {
             dotFile << "  P" << i << " -- "
-                    << "P" << ((i + 1) % points.size()) << " [label=\"4\"]"
-                    << (i < points.size() - 1 ? ";\n" : ";\n");
+                    << "P" << ((i + 1) % points.size())<< (i < points.size() - 1 ? ";\n" : ";\n");
         }
 
         dotFile << "}\n";
@@ -95,6 +150,7 @@ int convexHull::orientation(Point p1, Point p2, Point p3) //fix up
 
     return (val > 0) ? 1 : 2; //
 }
+
 
 int convexHull::findLowestY(std::vector<Point> dataSet)
 {
@@ -132,6 +188,15 @@ void convexHull::selection_sort(std::vector<Point> &dataSet)
             if(dataSet[j].angle < dataSet[min_indx].angle)
             {
                 min_indx = j;
+            }
+            if(dataSet[j].angle == dataSet[min_indx].angle) //if there are 2 of the same angles, put the one closest first
+            {
+                int distance1 = findDistance(dataSet[0], dataSet[j]);
+                int distance2 = findDistance(dataSet[0], dataSet[min_indx]);
+                if(distance1 < distance2)
+                {
+                    min_indx = j;
+                }
             }
         }
         swap(dataSet[i], dataSet[min_indx]);
