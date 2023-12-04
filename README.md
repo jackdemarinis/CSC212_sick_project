@@ -38,14 +38,17 @@ If you would like to have 2 different input files given, the DOT file produced w
 The GUI takes advantage of the "gdiplus" and "gdi32" libraries in order to produce images in a clean and customizable format. GDI stands for Graphics Device Interface and is a core graphics library in the windows operating system. It also utilizes a very popular header file; "Windows.h". This opens up a lot more commands and functions such as CreateWindowW, and AppendMenu. Finally, it uses the User32.dll library which is part of the Windows API (Application Programming Interface). This helps greatly with overall application development.
 
 Steps for the user :
-1. Link the gdiplus and gdi32 libraries in your IDE
-2. Export images into the file that contains the code
-3. Run the program
-4. Enter 3 values into the bottom textboxes -> Enter the name of the file with the file extension (Ex. myImage.jpg), the width of the image (Ex. 1280), and the height of the image (Ex. 720)
-5. Press the ENTER button
-6. For the program to process your image, press the PROCESS IMAGE button
-7. Once the program has processed your image, you can cycle between the original and the new image by pressing the CYCLE IMAGES button
-8. To reset the window and use the program again, open the drop-down menu in the top left of the window to reset everything -> Your new edited file will not be altered by this
+1. Locate your gdiplus and gdi32 libraries on your computer -> Modern computers with up to date operating systems should have them downloaded already
+2. Link the gdiplus and gdi32 libraries in your IDE -> If you are using CLion, add the link in your CMakeLists.txt
+   ![Highlighted CLion Cmake CSC212](https://github.com/jackdemarinis/CSC212_sick_project/assets/123503212/36dd225b-99e9-4682-a862-454e56f8c364)
+
+3. Export images into the file that contains the code
+4. Run the program
+5. Enter 3 values into the bottom textboxes -> Enter the name of the file with the file extension (Ex. myImage.jpg), the width of the image (Ex. 1280), and the height of the image (Ex. 720)
+6. Press the ENTER button
+7. For the program to process your image, press the PROCESS IMAGE button
+8. Once the program has processed your image, you can cycle between the original and the new image by pressing the CYCLE IMAGES button
+9. To reset the window and use the program again, open the drop-down menu in the top left of the window to reset everything -> Your new edited file will not be altered by this
 
 ## 3. Blockchain-Based Supply Chain Management
 
