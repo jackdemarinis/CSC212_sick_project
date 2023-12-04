@@ -22,6 +22,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "convexHull.h"
 
 /* These functions are defined in EasyBMP.h */
 
@@ -1959,40 +1960,92 @@ bool BMP::detectRed(char* filename){
     std::cout<<"MIN_POINTS: ("<<min_points.first<<", "<<min_points.second<<")"<<std::endl;
     std::cout<<"MAX_POINTS: ("<<max_points.first<<", "<<max_points.second<<")"<<std::endl;
 
-    int counter = 0;
-    for(int i = 0; i < og_pic.TellWidth(); i++){
-        for(int j = 0; j < og_pic.TellHeight(); j++){
-            if ((i == min_points.first || i == max_points.first) && j <= og_pic.TellHeight()-min_points.second && j >= og_pic.TellHeight()-max_points.second ){
-                
-                og_pic.SetPixel( i, j, ident );
-                if(i+3 <= og_pic.TellWidth()){
-                    og_pic.SetPixel( i+1, j, ident );
-                    og_pic.SetPixel( i+2, j, ident );
-                    og_pic.SetPixel( i+3, j, ident );
-                }
-                if(i-3 >= 0){
-                    og_pic.SetPixel( i-1, j, ident );
-                    og_pic.SetPixel( i-2, j, ident );
-                    og_pic.SetPixel( i-3, j, ident );
-                }
-                counter++;
-            }
-            if ((i >= min_points.first && i <= max_points.first) && ( j == og_pic.TellHeight()-min_points.second || j == og_pic.TellHeight()-max_points.second) ){
-                og_pic.SetPixel( i, j, ident );
-                if(j+3 <= og_pic.TellHeight()){
-                    og_pic.SetPixel( i, j+1, ident );
-                    og_pic.SetPixel( i, j+2, ident );
-                    og_pic.SetPixel( i, j+3, ident );
-                }
-                if(j-3 >= 0){
-                    og_pic.SetPixel( i, j-1, ident );
-                    og_pic.SetPixel( i, j-2, ident );
-                    og_pic.SetPixel( i, j-3, ident );
-                }
-                counter++;
-            }
-        }
-    }
+    convexHull hullObj;
+    std::vector<Point> data = hullObj.createConvexHull("points.txt");
+
+     for(int k = 0; k < data.size();k++){
+          if( k == data.size() - 1){
+               int dx = abs(data[0].x - data[k].x);
+               int dy = abs(data[0].y - data[k].y);
+               int sx = (data[k].x < data[0].x) ? 1 : -1;
+               int sy = (data[k].y < data[0].y) ? 1 : -1;
+
+               int err = dx - dy;
+
+               while (true) {
+                    // Draw the point (you might want to check if x and y are within the image boundaries)
+                    og_pic.SetPixel( data[k].x, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x+2, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y+2, ident );
+                    og_pic.SetPixel( data[k].x-2, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y-2, ident );
+
+                    if (data[k].x == data[0].x && data[k].y == data[0].y) {
+                         break;
+                    }
+
+                    int e2 = 2 * err;
+                    if (e2 > -dy) {
+                         err -= dy;
+                         data[k].x += sx;
+                    }
+
+                    if (e2 < dx) {
+                         err += dx;
+                         data[k].y += sy;
+                    }
+               }
+          }
+          else{
+               int dx = abs(data[k+1].x - data[k].x);
+               int dy = abs(data[k+1].y - data[k].y);
+               int sx = (data[k].x < data[k+1].x) ? 1 : -1;
+               int sy = (data[k].y < data[k+1].y) ? 1 : -1;
+
+               int err = dx - dy;
+
+               while (true) {
+                    // Draw the point (you might want to check if x and y are within the image boundaries)
+                    og_pic.SetPixel( data[k].x, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x+1, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y+1, ident );
+                    og_pic.SetPixel( data[k].x-1, Height-data[k].y-1, ident );
+                    og_pic.SetPixel( data[k].x+2, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y+2, ident );
+                    og_pic.SetPixel( data[k].x-2, Height-data[k].y, ident );
+                    og_pic.SetPixel( data[k].x, Height-data[k].y-2, ident );
+
+                    if (data[k].x == data[k+1].x && data[k].y == data[k+1].y) {
+                         break;
+                    }
+
+                    int e2 = 2 * err;
+                    if (e2 > -dy) {
+                         err -= dy;
+                         data[k].x += sx;
+                    }
+
+                    if (e2 < dx) {
+                         err += dx;
+                         data[k].y += sy;
+                    }
+               }
+          }
+
+     }
+
     og_pic.WriteToFile( "output.bmp" );
-    std::cout<<counter<<std::endl;
 }
