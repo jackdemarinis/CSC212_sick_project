@@ -39,9 +39,9 @@ The GUI takes advantage of the "gdiplus" and "gdi32" libraries in order to produ
 
 Steps for the user :
 1. Locate your gdiplus and gdi32 libraries on your computer -> Modern computers with up to date operating systems should have them downloaded already
-2. Link the gdiplus and gdi32 libraries in your IDE -> If you are using CLion, add the link in your CMakeLists.txt
+2. Link the gdiplus and gdi32 libraries in your IDE
+   a. If you are using CLion, add the link in your CMakeLists.txt
    ![Highlighted CLion Cmake CSC212](https://github.com/jackdemarinis/CSC212_sick_project/assets/123503212/36dd225b-99e9-4682-a862-454e56f8c364)
-
 3. Export images into the file that contains the code
 4. Run the program
 5. Enter 3 values into the bottom textboxes -> Enter the name of the file with the file extension (Ex. myImage.jpg), the width of the image (Ex. 1280), and the height of the image (Ex. 720)
