@@ -1,8 +1,11 @@
 #include <Windows.h>
 #include <gdiplus.h>
+#include "EasyBMP.h"
+#include "convexHull.h"
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 #define ENTER 1 //Defines each button
 #define CYCLE 2
 #define IMGPROCESS 3
@@ -10,6 +13,7 @@
 std::vector<std::string> listImages; //Vector for the names of images
 int imageWidthNum, imageHeightNum; //Integer values for the image resolution
 char resetStr[50]=""; //Reset String
+static char fnameUserInput[500], widthUserInput[500], heightUserInput[500];
 
 HWND ImageNameText, ImageWidth, ImageHeight, PictureHeader; //Each textbox
 
@@ -132,24 +136,44 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             }
 
 			static int CtrWidth, CtrHeight; //Window is about 1400 by 1005 pixels
-            if(imageWidthNum==1280&&imageHeightNum==720) {
-                CtrWidth=1280, CtrHeight=720; //Changes image resolution to 720p
-            }
-            else if(imageWidthNum==854&&imageHeightNum==480) {
-                CtrWidth=854, CtrHeight=480; //Changes image resolution to 480p
-            }
-            else if(imageWidthNum==640&&imageHeightNum==360) {
-                CtrWidth=640, CtrHeight=360; //Changes image resolution to 360p
-            }
-            else if(imageWidthNum==426&&imageHeightNum==240) {
-                CtrWidth=426, CtrHeight=240; //Changes image resolution to 240p
-            }
-            else if(imageWidthNum==256&&imageHeightNum==144) {
-                CtrWidth=256, CtrHeight=144; //Changes image resolution to 144p
-            }
-            else {
-                CtrWidth=imageWidthNum, CtrHeight=imageHeightNum; //Keeps the image the same resolution
-            }
+			if(imageHeightNum<=imageWidthNum) {
+                if(imageWidthNum==1280&&imageHeightNum==720) {
+                    CtrWidth=1280, CtrHeight=720; //Changes image resolution to 720p
+                }
+                else if(imageWidthNum==854&&imageHeightNum==480) {
+                    CtrWidth=854, CtrHeight=480; //Changes image resolution to 480p
+                }
+                else if(imageWidthNum==640&&imageHeightNum==360) {
+                    CtrWidth=640, CtrHeight=360; //Changes image resolution to 360p
+                }
+                else if(imageWidthNum==426&&imageHeightNum==240) {
+                    CtrWidth=426, CtrHeight=240; //Changes image resolution to 240p
+                }
+                else if(imageWidthNum==256&&imageHeightNum==144) {
+                    CtrWidth=256, CtrHeight=144; //Changes image resolution to 144p
+                }
+                else {
+                    CtrWidth=imageWidthNum, CtrHeight=imageHeightNum; //Keeps the image the same resolution
+                }
+			}
+			else {
+                if(imageHeightNum==1280&&imageWidthNum==720) {
+                    CtrHeight=1280, CtrWidth=720; //Changes image resolution to 720p
+                }
+                else if(imageHeightNum==854&&imageWidthNum==480) {
+                    CtrHeight=854, CtrWidth=480; //Changes image resolution to 480p
+                }
+                else if(imageHeightNum==640&&imageWidthNum==360) {
+                    CtrHeight=640, CtrWidth=360; //Changes image resolution to 360p
+                }
+                else if(imageHeightNum==426&&imageWidthNum==240) {
+                    CtrHeight=426, CtrWidth=240; //Changes image resolution to 240p
+                }
+                else if(imageHeightNum==256&&imageWidthNum==144) {
+                    CtrHeight=256, CtrWidth=144; //Changes image resolution to 144p
+                }
+			}
+
 
             positionX=((1400-CtrWidth)/2)-10,positionY=100;
 
@@ -165,16 +189,24 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		}
 		case WM_COMMAND: {
             if(LOWORD(wParam)==ENTER) {
-                static char fnameUserInput[500], widthUserInput[500], heightUserInput[500];
-                GetWindowText(ImageNameText, fnameUserInput, 50); //Grabs the values of each textbox
-                GetWindowText(ImageWidth, widthUserInput, 50);
-                GetWindowText(ImageHeight, heightUserInput, 50);
-                imageWidthNum=std::stoi(widthUserInput), imageHeightNum=std::stoi(heightUserInput);
-                if(imageWidthNum>1280&&imageHeightNum>720) { //Checks if the image resolution is greater than 720p
-                    imageWidthNum=1280, imageHeightNum=720; //Auto adjusts image down to 720p to fit into the window
-                }
-
                 if(listImages.size()<2) { //Lets you input one image but only one
+                    GetWindowText(ImageNameText, fnameUserInput, 50); //Grabs the values of each textbox
+                    GetWindowText(ImageWidth, widthUserInput, 50);
+                    GetWindowText(ImageHeight, heightUserInput, 50);
+                    imageWidthNum=std::stoi(widthUserInput), imageHeightNum=std::stoi(heightUserInput);
+                    if(imageHeightNum>imageWidthNum) {
+                        if(imageWidthNum>640&&imageHeightNum>360) { //Checks if the image resolution is greater than 360p
+                            imageWidthNum=360, imageHeightNum=640; //Auto adjusts image down to 360p to fit into the window
+                        }
+                    }
+                    else if(imageWidthNum>1280&&imageHeightNum>720&&imageHeightNum==imageWidthNum) {
+                        imageWidthNum=720, imageHeightNum=720;
+                    }
+                    else {
+                        if(imageWidthNum>1280&&imageHeightNum>720) { //Checks if the image resolution is greater than 720p
+                            imageWidthNum=1280, imageHeightNum=720; //Auto adjusts image down to 720p to fit into the window
+                        }
+                    }
                     listImages.emplace_back(fnameUserInput);
                     counter++;
                     InvalidateRect(hwnd, NULL, TRUE); //Draws the image
@@ -204,7 +236,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 				InvalidateRect(hwnd, NULL, TRUE); //Draws the image
             }
             if(LOWORD(wParam)==IMGPROCESS) { //Button to process the user inputted image
-
+                BMP picture;
+                picture.detectRed(fnameUserInput);
+                listImages.emplace_back("output.bmp");
+                counter++;
+                InvalidateRect(hwnd, NULL, TRUE); //Draws the image
+                std::ofstream file("output.dot", std::ios::trunc); //clear output.dot
+                convexHull hullObj; // Create an object of the convexHull class
+                std::vector<Point> data = hullObj.createConvexHull("points.txt"); //creates a DOT file and stores the CH in data
             }
             if(LOWORD(wParam)==101) { //Menu Reset Button
                 counter=0;
