@@ -16,12 +16,12 @@ HWND ImageNameText, ImageWidth, ImageHeight, PictureHeader; //Each textbox
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow) {
-	static const char ClassName[] = "MyImageViewer";
-	WNDCLASSEX wc;
-	MSG msg;
+	static const char ClassName[] = "MyImageViewer"; //Window class name
+	WNDCLASSEX wc; //Window class structure
+	MSG msg; //Message and window handles
 	HWND hwnd;
 
-	Gdiplus::GdiplusStartupInput gdiStartup;
+	Gdiplus::GdiplusStartupInput gdiStartup; //Initialization of gdiplus
 	ULONG_PTR gdiToken;
 
 	Gdiplus::GdiplusStartup(&gdiToken, &gdiStartup, NULL);
@@ -29,15 +29,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine
 	wc.cbClsExtra = 0;
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.cbWndExtra = 0;
-	wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //Sets background color -> WHITE_BRUSH meaning a white background
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW); //Default cursor of the window
 	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	wc.hInstance = hInstance;
+	wc.hInstance = hInstance; //Sets instance handle of the application
 	wc.lpfnWndProc = WndProc;
-	wc.lpszClassName = ClassName;
+	wc.lpszClassName = ClassName; //Sets name of window class
 	wc.lpszMenuName = NULL;
-	wc.style = CS_VREDRAW | CS_HREDRAW;
+	wc.style = CS_VREDRAW | CS_HREDRAW; //Sets window class style
 
 	if (!RegisterClassEx(&wc)) {
 		MessageBox(NULL, "Error register class", "Error", MB_ICONERROR);
