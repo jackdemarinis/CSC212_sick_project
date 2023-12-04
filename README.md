@@ -27,7 +27,11 @@ At the conclusion of this project, we will have working code that can find the c
 
 ### How to run the code
 
-To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull. A dotFile will be created, allowing for it be visualized using a compiler such as GraphViz Online. If running the code multiple times, please delete any data in the DOT file or there will be errors.
+To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull. The name of the text file should be in the CLA so it can be accessed. A dotFile will be created, allowing for it be visualized using a compiler such as GraphViz Online. If running the code multiple times, please delete any data in the DOT file or there will be errors.
+
+## Testing with 2 input Files
+
+If you would like to have 2 different input files given, the DOT file produced will include both convex hulls seperate. This can be used as a collision detection, showing if the two convex hulls intersect. To do so, inlcude both text file names in the CLA and adjust the main according by calling "std::vector<Point> data2 = hullObj.createConvexHull(argc[2]);" again, accessing the second CLA.
 
 ## 2. GUI-Creation
 
