@@ -12,6 +12,11 @@ struct Point {
 
 
 class convexHull {
+    void appendToFile(const std::string& filename, const std::string& content);
+
+    void removeLastLine(const std::string& filename);
+
+    int findDistance(Point p1, Point p2);
 
     std::vector<Point> initialize(std::string file);
 
@@ -31,6 +36,8 @@ class convexHull {
 
 public:
     std::vector<Point> createConvexHull(std::string filename);
+
+    void detectShape(std::vector<Point> convexHull);
 };
 
 
