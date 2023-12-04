@@ -27,7 +27,7 @@ At the conclusion of this project, we will have working code that can find the c
 
 ### How to run the code
 
-Our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull.
+To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull. A dotFile will be created, allowing for it be visualized using a compiler such as GraphViz Online. If running the code multiple times, please delete any data in the DOT file or there will be errors.
 
 ## 2. GUI-Creation
 
