@@ -77,7 +77,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		}
 		case WM_CREATE: { //Making the
 
-            //Window is about 1500 by 1005 pixels
+            //Window is about 1400 by 1005 pixels
 
             //Makes the drop down menu for the reset button
             HMENU hBaseMenu = CreateMenu();
@@ -87,7 +87,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             SetMenu(hwnd, hBaseMenu);
 
             //Picture header textbox -> Set to basic value of "[No Picture Inputted]"
-            PictureHeader=CreateWindowExW(0, L"STATIC", L"[No Picture Inputted]", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,680, 5, 200, 40, hwnd, NULL, GetModuleHandleW(NULL), NULL);
+            PictureHeader=CreateWindowExW(0, L"STATIC", L"[No Picture Inputted]", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,600, 5, 200, 40, hwnd, NULL, GetModuleHandleW(NULL), NULL);
 
             //The title boxes for the user input textboxes
             CreateWindowExW(0, L"STATIC", L"File Name", WS_BORDER | WS_VISIBLE | WS_CHILD | ES_CENTER,30, 867, 80, 30, hwnd, NULL, GetModuleHandleW(NULL), NULL);
