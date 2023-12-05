@@ -62,12 +62,9 @@ Steps for the User:
 1. create a object file for BMP.cpp ex. g++ -c EasyBMP.cpp
 2. compile the main.cpp, convexHull.cpp and EasyBMP.o together ex. g++ -o img main.cpp convexHull.cpp EasyBMP.o
 3. run ./img <something.bmp>
-Collaborating with logistics experts, supply chain managers, and blockchain specialists is essential to ensure that the system aligns with industry standards and security requirements.
 
 ### Expected Outcomes
 
-By the end of this project, you will have created a blockchain-based supply chain management system, increasing transparency and trust in product movements. This project will deepen your understanding of blockchain technology and its applications in logistics and transparency.
+By the end of this project, a picture with a red object will be able to detect and dispaly the convex hull of the red object. A GUI was mode to display the results.
 
-### Collaboration and Expertise
 
-Collaborating with logistics experts, supply chain managers, and blockchain specialists is essential to ensure that the system aligns with industry standards and security requirements.
