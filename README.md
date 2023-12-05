@@ -24,9 +24,6 @@ An inputted image is analyzed to find a specific color of pixel. In our case, we
 
 6. Print out the components of the convex hull.
 
-### Expected Outcomes
-
-At the conclusion of this project, we will have working code that can find the convex hull of a set of points and store them into a vector. Using this vector, we can implement different functions that provide real world scenarios to display the uses of a convex hull. Our code will take the red points in a picture and find the convex hull of that shape, than displaying the convex hull over the original picture.
 
 ### How to run the code
 
@@ -65,6 +62,6 @@ Steps for the User:
 
 ### Expected Outcomes
 
-By the end of this project, a picture with a red object will be able to detect and dispaly the convex hull of the red object. A GUI was mode to display the results.
+At the conclusion of this project, we will have working code that can find the convex hull of a set of points and store them into a vector. Using this vector, we can implement different functions that provide real world scenarios to display the uses of a convex hull. Our code will take the red points in a picture and find the convex hull of that shape, than displaying the convex hull over the original picture.
 
 
