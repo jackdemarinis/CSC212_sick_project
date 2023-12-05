@@ -4,8 +4,11 @@
 
 ![Architectural Design](./pictures/Intro.png)
 
-### Project Description
+### Topic Description
 The convex hull of a set of points is the smallest convex shape enclosing all the given points without any inward angles greater than 180 degrees. It represents the outer boundary that forms a convex polygon or polyhedron, essential in computational geometry for various algorithms involving point sets, such as collision detection, spatial analysis, and computational geometry problems. To accomplish this, Graham's scan algorithm is impleted to find the convex hull.
+
+### Project Description
+An inputted image is analyzed to find a specific color of pixel. In our case, we chose to check for all red pixels. Once a red pixel is found, it is stored into a vector of pairs. The vector is than later iterated through and the x and y coordinate of each pixel is written to a file. This file is than used as an input to the code that will find the convex hull. Once the convex hull of the red object is found, each point from the convex hull in the picture will be scanned in orded connecting them by a line. The final output will be the original picture with the outlining convex hull. A GUI was made to display the before and after picture.
 
 ### Graham's Scan Algorithm
 
