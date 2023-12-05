@@ -26,11 +26,11 @@ An inputted image is analyzed to find a specific color of pixel. In our case, we
 
 ### Expected Outcomes
 
-At the conclusion of this project, we will have working code that can find the convex hull of a set of points and store them into a vector. Using this vector, we can implement different functions that provide real world scenarios to display the uses of a convex hull. Main implemenetations are collision detection, image processing and shape detection.
+At the conclusion of this project, we will have working code that can find the convex hull of a set of points and store them into a vector. Using this vector, we can implement different functions that provide real world scenarios to display the uses of a convex hull. Our code will take the red points in a picture and find the convex hull of that shape, than displaying the convex hull over the original picture.
 
 ### How to run the code
 
-To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. Test inputs are provided. This text file is the data that will be used to calcualte the convex hull. The name of the text file should be in the CLA so it can be accessed. A dot file will be created, allowing for it be visualized using a compiler such as GraphViz Online. mainex1.cpp has an example of this code.
+To run convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. Test inputs are provided. This text file is the data that will be used to calcualte the convex hull. The name of the text file should be in the CLA so it can be accessed. A dot file will be created, allowing for it be visualized using a compiler such as GraphViz Online. mainex1.cpp has an example of this code.
 
 ## Testing with 2 input Files
 
