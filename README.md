@@ -30,7 +30,7 @@ At the conclusion of this project, we will have working code that can find the c
 
 ### How to run the code
 
-To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. This text file is the data that will be used to calcualte the convex hull. The name of the text file should be in the CLA so it can be accessed. A dotFile will be created, allowing for it be visualized using a compiler such as GraphViz Online. If running the code multiple times, please delete any data in the DOT file or there will be errors. mainex1.cpp has the main function to run this code.
+To run the main.cpp and convexHull.cpp to test out preset inputs, our code takes a text file with a list of points as an input. Each point should be on its own line, sepereating the x and y coordinate by a space. Test inputs are provided. This text file is the data that will be used to calcualte the convex hull. The name of the text file should be in the CLA so it can be accessed. A dot file will be created, allowing for it be visualized using a compiler such as GraphViz Online. mainex1.cpp has an example of this code.
 
 ## Testing with 2 input Files
 
