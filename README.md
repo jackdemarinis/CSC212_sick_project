@@ -52,31 +52,17 @@ Steps for the user :
 8. Once the program has processed your image, you can cycle between the original and the new image by pressing the CYCLE IMAGES button
 9. To reset the window and use the program again, open the drop-down menu in the top left of the window to reset everything -> Your new edited file will not be altered by this
 
-## 3. Blockchain-Based Supply Chain Management
+## 3. Img Proccessing and Detection
 
-![Blockchain Supply Chain Image](./pictures/block.jpeg)
+In order to utilize the convex hull in some type of real world application,as stated earlier, the project heavily relies on image analysis. More specifically bmp images. In order to properly extract the necessary information from images the code
+needs to scan the image file and look in certain locations for certain things. These locations are different per image type. The code looks at bmp because they are one of the simplest image formats to wrap your head around. In order to not 
+rediscover the wheel our code uses a simple c++ library called EasyBMP which locates important information such as the image data, height and width of the photo. Once all of this data is found we can easily utilize the Graham's scan algorithm to edit the image. The code will produce a new bmp files that oulines all of the red pixels in the orignal.cpp
 
-### Project Description
-
-This project centers on the development of a blockchain-based system to enhance supply chain management. Blockchain technology will be used to track and verify product movements, ensuring transparency and reducing fraud.
-
-### Project Steps
-
-1. **Blockchain Technology Selection**: Choose an appropriate blockchain technology (e.g., Ethereum, Hyperledger) for the supply chain management system.
-
-2. **Supply Chain Context**: Define the specific supply chain context (e.g., food, pharmaceuticals) and set the scope of the project.
-
-3. **Data Structure Design**: Design the blockchain data structure to store information about product origins, movements, and verification points.
-
-4. **Smart Contracts**: Create smart contracts that automate and enforce supply chain rules, such as product verification at each stage.
-
-5. **User Interface Development**: Develop user interfaces for supply chain stakeholders to interact with the blockchain system, tracking product movements and history.
-
-6. **Security and Auditing**: Implement security measures to protect the integrity of the blockchain and auditing capabilities for transparency.
-
-7. **Testing and Verification**: Verify the system's effectiveness in tracking and securing the supply chain.
-
-8. **Documentation and User Guide**: Provide documentation and user guides for supply chain participants to understand and use the blockchain-based system.
+Steps for the User:
+1. create a object file for BMP.cpp ex. g++ -c EasyBMP.cpp
+2. compile the main.cpp, convexHull.cpp and EasyBMP.o together ex. g++ -o img main.cpp convexHull.cpp EasyBMP.o
+3. run ./img <something.bmp>
+Collaborating with logistics experts, supply chain managers, and blockchain specialists is essential to ensure that the system aligns with industry standards and security requirements.
 
 ### Expected Outcomes
 
