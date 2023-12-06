@@ -1921,7 +1921,7 @@ bool BMP::detectRed(char* filename){
 
     BMP og_pic;
     RGBApixel temp_pixel;
-    int threshold = 63;
+    int threshold = 75;
     RGBApixel ident;
     ident.Red = 0;
     ident.Green = 255;
@@ -1932,7 +1932,8 @@ bool BMP::detectRed(char* filename){
         for(int j = 0; j < og_pic.TellHeight();j++){
             temp_pixel = og_pic.GetPixel(i,j);
             //std::cout<<"("<<int(temp_pixel.Red)<<", "<<int(temp_pixel.Green)<<", "<<int(temp_pixel.Blue)<<") ";
-            if(int(temp_pixel.Red) > 255 - threshold && int(temp_pixel.Green)< 0 + threshold && int(temp_pixel.Blue) < 0 + threshold){
+            if(int(temp_pixel.Red) > 255 - threshold && int(temp_pixel.Green)< 0 
+            + threshold && int(temp_pixel.Blue) < 0 + threshold){
                 //og_pic.SetPixel( i, j, ident );
                 temp_point.first = i;
                 temp_point.second = og_pic.TellHeight() - j;

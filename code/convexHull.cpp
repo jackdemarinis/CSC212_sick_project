@@ -6,6 +6,7 @@
 #include <vector>
 #include <iomanip>
 #include <string>
+#include <cmath>
 
 void convexHull::detectShape(std::vector<Point> convexHull)
 {
